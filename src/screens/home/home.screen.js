@@ -1,20 +1,13 @@
-import React from 'react';
-import { SafeAreaView } from 'react-native';
-import { Button, Divider, Layout, TopNavigation } from '@ui-kitten/components';
+import { Layout, Text } from '@ui-kitten/components'
+import React from 'react'
+import { View } from 'react-native'
 
-export const HomeScreen = ({ navigation }) => {
-
-  const navigateDetails = () => {
-    navigation.navigate('Details');
-  };
-
-  return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <TopNavigation title='Kontollkonak' alignment='center'/>
-      <Divider/>
+const HomeScreen = () => {
+  return (<View style={{ flex: 1 }}>
       <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Button onPress={navigateDetails}>OPEN DETAILS</Button>
+        <Text>Register Screen</Text>
       </Layout>
-    </SafeAreaView>
-  );
-};
+  </View>)
+}
+
+export default HomeScreen

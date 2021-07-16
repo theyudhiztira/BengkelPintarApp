@@ -2,13 +2,21 @@ import React from 'react';
 import * as eva from '@eva-design/eva';
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
-import { AppNavigator } from './navigation/appNavigator';
+import { NavigationContainer } from '@react-navigation/native';
+import RootStack from './stacks/root.stack';
+import { AuthContextProvider } from './context/AuthContext';
 
-export default () => (
-  <>
-    <IconRegistry icons={EvaIconsPack}/>
-    <ApplicationProvider {...eva} theme={eva.light}>
-      <AppNavigator/>
-    </ApplicationProvider>
-  </>
-);
+export default () => {
+  return (
+    <>
+      <IconRegistry icons={EvaIconsPack}/>
+        <ApplicationProvider {...eva} theme={eva.dark}>
+          <AuthContextProvider>
+            <NavigationContainer>
+              <RootStack />
+            </NavigationContainer>
+          </AuthContextProvider>
+        </ApplicationProvider>
+    </>
+  )
+};

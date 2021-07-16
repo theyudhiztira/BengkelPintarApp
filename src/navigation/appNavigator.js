@@ -7,7 +7,7 @@ import { DetailsScreen } from '../screens/details/details.screen';
 const { Navigator, Screen } = createStackNavigator();
 
 const HomeNavigator = () => (
-  <Navigator headerMode='none'>
+  <Navigator headerMode=''>
     <Screen name='Home' component={HomeScreen}/>
     <Screen name='Details' component={DetailsScreen}/>
   </Navigator>
