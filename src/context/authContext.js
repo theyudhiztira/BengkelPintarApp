@@ -3,7 +3,7 @@ import React from 'react'
 export const AuthContext = React.createContext()
 
 export const AuthContextProvider = ({children}) => {
-  const [isLoggedIn, setIsLoggedIn] = React.useState(true)
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false)
 
   return (
     <AuthContext.Provider value={{

@@ -1,7 +1,7 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import Welcome from '../screens/welcome/welcome.screen'
-import { AuthContext } from '../context/AuthContext'
+import { AuthContext } from '../context/authContext'
 import { SafeAreaView } from 'react-native'
 import { Layout, Text } from '@ui-kitten/components'
 import LoginScreen from '../screens/login/login.screen'
@@ -14,13 +14,13 @@ const RootStack = () => {
   const authContext = React.useContext(AuthContext)
   
   const loggedInScreens = (<>
-    <Screen name='Welcome' component={Welcome} />
-    <Screen name='Login' component={LoginScreen} />
-    <Screen name='Register' component={RegisterScreen} />
+    <Screen name='WELCOME' component={Welcome} />
+    <Screen name='LOGIN' component={LoginScreen} />
+    <Screen name='REGISTER' component={RegisterScreen} />
   </>)
 
   const guestScreen = (<>
-    <Screen name='Home' component={HomeScreen} />
+    <Screen name='HOME' component={HomeScreen} />
   </>)
 
   return (<Navigator headerMode='none'>
