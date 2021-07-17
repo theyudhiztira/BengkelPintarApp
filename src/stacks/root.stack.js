@@ -1,7 +1,7 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import Welcome from '../screens/welcome/welcome.screen'
-import { AuthContext } from '../context/AuthContext'
+import { AuthContext } from '../context/authContext'
 import { SafeAreaView } from 'react-native'
 import { Layout, Text } from '@ui-kitten/components'
 import LoginScreen from '../screens/login/login.screen'
