@@ -1,21 +1,28 @@
 import React from 'react'
-import { View } from 'react-native'
-import { Layout, Text, Button } from '@ui-kitten/components'
+import {useContextMultipleForm} from '../../context/formContext';
+import StepOne from './step_one';
+import StepTwo from './step_two';
 
 const RegisterScreen = ({navigation}) => {
-  return (<View style={{ flex: 1 }}>
-      <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Register Screen</Text>
-        <Button
-          style={{
-            marginTop: 10
-          }}
-          onPress={() => {
-            navigation.navigate('Login')
-          }}
-        >Register</Button>
-      </Layout>
-  </View>)
+  const multiStepFormContext = useContextMultipleForm();
+
+  const stepForm = (step) => {
+    switch (step) {
+      case 1:
+        return <StepOne navigation={navigation}/>
+      default:
+        return <StepTwo />
+    }
+  }
+
+
+  return (
+    <>
+    {
+      stepForm(multiStepFormContext.step)
+    }
+    </>
+  )
 }
 
 export default RegisterScreen
