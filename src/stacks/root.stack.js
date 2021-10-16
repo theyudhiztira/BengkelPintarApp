@@ -6,6 +6,7 @@ import { SafeAreaView } from 'react-native'
 import { Layout, Text } from '@ui-kitten/components'
 import LoginScreen from '../screens/login/login.screen'
 import RegisterScreen from '../screens/register/register.screen'
+import StepOne from '../screens/register/step_one'
 import HomeScreen from '../screens/home/home.screen'
 
 const { Navigator, Screen } = createStackNavigator()
@@ -17,6 +18,7 @@ const RootStack = () => {
     <Screen name='WELCOME' component={Welcome} />
     <Screen name='LOGIN' component={LoginScreen} />
     <Screen name='REGISTER' component={RegisterScreen} />
+    <Screen name='RESITRATION_STEP_ONE' component={StepOne} />
   </>)
 
   const guestScreen = (<>

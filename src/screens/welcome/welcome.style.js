@@ -5,7 +5,7 @@ const style = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   screenBackground: {
     flex: 1,
