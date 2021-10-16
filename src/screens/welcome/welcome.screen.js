@@ -1,7 +1,6 @@
 import { Button, Layout, Text } from '@ui-kitten/components'
 import React from 'react'
-import { Image, ImageBackground, SafeAreaView, Touchable, TouchableOpacity, View } from 'react-native'
-import { AuthContext } from '../../context/authContext'
+import { Image, ImageBackground, View } from 'react-native'
 import imageBg from '../../assets/welcome-screen-bg.jpg'
 import imageLogo from '../../assets/welcome-logo.png'
 import style from './welcome.style'
@@ -9,10 +8,6 @@ import LinearGradient from 'react-native-linear-gradient'
 import * as eva from '@eva-design/eva'
 
 const Welcome = ({ navigation }) => {
-  const authContext = React.useContext(AuthContext)
-  
-  console.log(eva.dark['color-primary-100'])
-
   return (
     <Layout style={style.screenView}>
       <ImageBackground source={imageBg} resizeMode="cover" style={style.screenBackground}>
