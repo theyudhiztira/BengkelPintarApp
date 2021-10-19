@@ -24,7 +24,7 @@ const LoginScreen = ({ navigation }) => {
     />
   );
 
-  const sendLogin = async (loginData) => {
+  const loginServices = async (loginData) => {
     const {status, data, message} = await loginHandler(loginData)
     // console.log(status, data, message)
 
@@ -63,7 +63,7 @@ const LoginScreen = ({ navigation }) => {
           </View>
           <View style={{ marginTop: 15 }}>
             <Button
-              onPress={async () => await sendLogin({email, password})}
+              onPress={async () => await loginServices({email, password})}
             >
               Masuk
             </Button>

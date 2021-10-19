@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import { Layout, Text, Button, Input, Icon, TopNavigationAction, TopNavigation } from '@ui-kitten/components';
 import * as eva from '@eva-design/eva';
-import { useContextMultipleForm } from '../../context/formContext';
+import { useContextMultipleForm, useContextRegister } from '../../context/formContext';
+import { registerHandler } from './register.handler';
 
 const styles = StyleSheet.create({
   row: {
@@ -34,6 +35,8 @@ const BackIcon = (props) => (
 
 const StepTwo = () => {
   const multiStepFormContext = useContextMultipleForm();
+  const registerContext = useContextRegister();
+
   const [secureTextEntry, setSecureTextEntry] = useState(true);
 
   const BackAction = () => (
@@ -54,6 +57,15 @@ const StepTwo = () => {
     </TouchableWithoutFeedback>
   );
 
+  // console.log(registerContext.registerData);
+
+  const registerServices = async (registerData) => {
+    // console.log(registerData);
+    const testing = await registerHandler(registerData);
+
+    // console.log(testing);
+  }
+
   return (
     <View style={{ flex: 1, backgroundColor: '#121212' }}>
       <TopNavigation
@@ -68,32 +80,38 @@ const StepTwo = () => {
         <Layout style={{ backgroundColor: 'transparent' }}>
           <Input
             style={styles.input}
-            // value={value}
+            value={registerContext.registerData.name || ''}
             placeholder='Nama'
-            // onChangeText={nextValue => setValue(nextValue)}
+            onChangeText={nextValue => registerContext.setRegisterData({...registerContext.registerData, name: nextValue})}
           />
           <Input
             style={styles.input}
-            // value={value}
+            value={registerContext.registerData.email || ''}
             placeholder='Email'
-            // onChangeText={nextValue => setValue(nextValue)}
+            onChangeText={nextValue => registerContext.setRegisterData({...registerContext.registerData, email: nextValue})}
           />
           <Input
             style={styles.input}
-            // value={value}
+            value={registerContext.registerData.password || ''}
             placeholder='Password'
             accessoryRight={renderIcon}
             secureTextEntry={secureTextEntry}
-            // onChangeText={nextValue => setValue(nextValue)}
+            onChangeText={nextValue => registerContext.setRegisterData({...registerContext.registerData, password: nextValue})}
+          />
+          <Input
+            style={styles.input}
+            value={registerContext.registerData.password_confirmation || ''}
+            placeholder='Password Confirmation'
+            // accessoryRight={renderIcon}
+            secureTextEntry={secureTextEntry}
+            onChangeText={nextValue => registerContext.setRegisterData({...registerContext.registerData, password_confirmation: nextValue})}
           />
         </Layout>
         <Button
           style={{
             marginTop: 40
           }}
-          onPress={() => {
-            navigation.navigate('LOGIN')
-          }}
+          onPress={async () => await registerServices(registerContext.registerData)}
         >
           <Text style={styles.btnPrimary}>
             Daftar

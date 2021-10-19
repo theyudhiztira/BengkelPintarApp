@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import { Layout, Text, Button, Input, Icon, TopNavigationAction, TopNavigation } from '@ui-kitten/components';
-import { useContextMultipleForm } from '../../context/formContext';
+import { useContextMultipleForm, useContextRegister } from '../../context/formContext';
 
 const styles = StyleSheet.create({
   row: {
@@ -36,6 +36,7 @@ const BackIcon = (props) => (
 
 const StepOne = ({navigation}) => {
   const multiStepFormContext = useContextMultipleForm();
+  const registerContext = useContextRegister();
 
   const BackAction = () => (
     <TopNavigationAction 
@@ -68,17 +69,17 @@ const StepOne = ({navigation}) => {
             style={styles.input}
             label='Nomor Telepon'
             accessoryLeft = {iconPhone}
-            // value={value}
+            value={registerContext.registerData.phone || ''}
             placeholder='Contoh: 085811733128'
-            // onChangeText={nextValue => setValue(nextValue)}
+            onChangeText={nextValue => registerContext.setRegisterData({...registerContext.registerData, phone: nextValue})}
           />
-          <Input
+          {/* <Input
             style={styles.input}
             label='Kode Ajakan (Opsional)'
-            // value={value}
+            value={registerContext.registerData.phone || ''}
             placeholder='Masukan Kode Ajakan'
-            // onChangeText={nextValue => setValue(nextValue)}
-          />
+            onChangeText={nextValue => registerContext.setRegisterData({...registerContext.registerData, phone: nextValue})}
+          /> */}
           {/* <Input
             style={styles.input}
             // value={value}

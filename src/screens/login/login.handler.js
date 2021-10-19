@@ -1,6 +1,5 @@
 import React from "react";
 import Axios from "axios";
-import { AuthContext } from "../../context/authContext";
 
 
 export const loginHandler = async(data) => {
