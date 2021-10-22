@@ -1,8 +1,11 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Button, Icon, Input, Layout, Text, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import { TouchableWithoutFeedback } from '@ui-kitten/components/devsupport';
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native';
+import { AuthContext } from '../../context/authContext';
 import {useContextMultipleForm, useContextRegister} from '../../context/formContext';
+import { registerHandler } from './register.handler';
 import StepOne from './step_one';
 import StepTwo from './step_two';
 
@@ -36,6 +39,7 @@ const BackIcon = (props) => (
 );
 
 const RegisterScreen = ({navigation}) => {
+  const authContext = React.useContext(AuthContext);
   const multiStepFormContext = useContextMultipleForm();
   const registerContext = useContextRegister();
 
@@ -63,10 +67,18 @@ const RegisterScreen = ({navigation}) => {
   // console.log(registerContext.registerData);
 
   const registerServices = async (registerData) => {
-    // console.log(registerData);
-    const testing = await registerHandler(registerData);
+    const {status, data, message} = await registerHandler(registerData);
 
-    // console.log(testing);
+
+     if(!status){
+      return alert(message);
+    }
+
+    await AsyncStorage.setItem('bp_token', data.accessToken);
+
+    const checkToken = await AsyncStorage.getItem('bp_token');
+
+    return authContext.setIsLoggedIn(true);
   }
 
   return (
@@ -89,7 +101,7 @@ const RegisterScreen = ({navigation}) => {
           />
           <Input
             style={styles.input}
-            label='Nomor Telepon'
+            // label='Nomor Telepon'
             accessoryLeft = {iconPhone}
             value={registerContext.registerData.phone || ''}
             placeholder='Contoh: 085811733128'

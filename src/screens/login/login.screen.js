@@ -35,7 +35,7 @@ const LoginScreen = ({ navigation }) => {
     await AsyncStorage.setItem('bp_token', data.accessToken);
 
     const checkToken = await AsyncStorage.getItem('bp_token');
-    console.log(checkToken);
+    // console.log(checkToken);
 
     return authContext.setIsLoggedIn(true);
   }
