@@ -13,7 +13,6 @@ target 'BengkelPintarApp' do
   )
 
 
-  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-async-storage/async-storage'
 
   target 'BengkelPintarAppTests' do
     inherit! :complete

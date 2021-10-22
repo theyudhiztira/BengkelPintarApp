@@ -44,7 +44,7 @@ const LoginScreen = ({ navigation }) => {
   const [password, setPassword] = useState('')
 
   return (
-    <View>
+    <SafeAreaView>
       <TopNavigation
         accessoryLeft={BackAction}
       />
@@ -70,7 +70,7 @@ const LoginScreen = ({ navigation }) => {
           </View>
         </SafeAreaView>
       </Layout>
-    </View>
+    </SafeAreaView>
   )
 }
 

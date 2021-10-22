@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Layout, Text, Button } from '@ui-kitten/components'
 import React from 'react'
 import { View } from 'react-native'
@@ -14,8 +15,9 @@ const HomeScreen = () => {
             style={{
               marginTop: 10
             }}
-            onPress={() => {
-              authContext.setIsLoggedIn(!authContext.isLoggedIn)
+            onPress={async () => {
+              await AsyncStorage.removeItem('bp_token')
+              await authContext.setIsLoggedIn(!authContext.isLoggedIn)
             }}
           >Sign Out</Button>
       </Layout>
